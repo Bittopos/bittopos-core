@@ -1,0 +1,15 @@
+[package]
+name = "bittopos-core"
+version = "0.1.0"
+edition = "2021"
+description = "Núcleo compartido de Bittopos: modelo semántico, perfiles, proyectos y persistencia"
+license = "Apache-2.0"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+toml = "0.8"
+uuid = { version = "1", features = ["v7", "serde"] }
+serde_json = "1.0.152"
+
+[dev-dependencies]
+tempfile = "3"
