@@ -13,7 +13,6 @@ struct Sqlite3 {
     _private: [u8; 0],
 }
 
-#[link(name = "sqlite3")]
 extern "C" {
     fn sqlite3_open(filename: *const c_char, db: *mut *mut Sqlite3) -> c_int;
     fn sqlite3_close(db: *mut Sqlite3) -> c_int;
