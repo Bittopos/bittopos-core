@@ -3,10 +3,10 @@
 use std::fmt;
 
 use crate::{
-    create_instance_under, load_workspace, remove_instance, LifecycleError, NavigationError,
-    NavigationState, NavigationStore, Profile, ProfileError, ProfileStore, Project, ProjectError,
-    ProjectStore, ResourceStore, Workspace, WorkspaceStore,
+    create_instance_under, load_workspace, remove_instance, LifecycleError, Profile, ProfileError,
+    ProfileStore, Project, ProjectError, ProjectStore, ResourceStore, Workspace, WorkspaceStore,
 };
+use super::navigation::{NavigationError, NavigationState, NavigationStore};
 
 /// Error producido al preparar el contexto operativo del workspace.
 #[derive(Debug)]
