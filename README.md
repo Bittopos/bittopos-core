@@ -1,8 +1,18 @@
 # bittopos-core
 
-Canonical shared Rust crate for Bittopos.
+Canonical Rust domain and storage crate for Bittopos. The application API is kept in this repository, but separated from the core under `src/api/`.
 
-This crate owns the semantic domain model, profile/project/resource operations, workspace lifecycle, and SQLite persistence primitives. The CLI and server should depend on this crate instead of copying domain logic.
+## Responsibility boundary
+
+- **Core:** domain types and invariants, semantic resolution, resource/workspace storage and serialization, and persistence primitives.
+- **API (`bittopos_core::api`):** operations that coordinate core facilities for interface consumers, including application use cases, navigation context, and semantic-mask workflows.
+- **Interfaces:** user interaction, interface-specific state and orchestration, and process lifecycle. The core and API do not manage operating-system processes.
+
+The API is a boundary over the core, not part of the domain model. Domain semantics should have one canonical implementation in the core; the API delegates to those rules rather than duplicating them.
+
+## Current extraction status
+
+This change establishes the explicit API module and moves application orchestration, navigation, semantic-mask workflows, and read-only model queries behind it. The existing instance lifecycle and resource/reference/relation creation paths remain coupled to core storage modules and need a further focused extraction before this boundary can be considered complete. This PR must therefore be reviewed as an architectural step, not as proof that all core responsibilities have already been minimized.
 
 ## Dependency from another repository
 
